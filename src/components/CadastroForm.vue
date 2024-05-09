@@ -271,7 +271,7 @@ export default {
         this.cidade = data.localidade;
         this.ufEndereco = data.uf;
 
-        console.log(data);
+        
       }
     },
   },
