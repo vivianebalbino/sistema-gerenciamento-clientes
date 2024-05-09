@@ -37,11 +37,8 @@ export default {
 
   methods: {
     hideNavLinks() {
-      document.querySelector("#nav").childNodes.forEach((elemento, posicao) => {
-        if (posicao > 0) {
-          elemento.style.display = "none";
-        }
-      });
+      document.querySelector("#nav").style = "visibility: hidden;"
+      document.querySelector("#footer").style = "visibility: hidden;"
     }, 
 
     login() {
@@ -51,6 +48,8 @@ export default {
           user.username === this.username && user.password === this.password
       );
       if (user) {
+        document.querySelector("#nav").style = "visibility: visible;"
+        document.querySelector("#footer").style = "visibility: visible;"
         this.$router.push('/cadastro-clientes');
       } else {
         alert("Credenciais inválidas");
@@ -124,7 +123,7 @@ label{
     padding: 6px 12px;
     font-size: 14px;
     line-height: 1.428571429;
-    color: #d7cbcb;
+    color: #9f2d34;
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;

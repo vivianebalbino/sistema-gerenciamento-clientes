@@ -1,105 +1,271 @@
 {
-    "ingredientes": {
-      "paes": [
-        {
-          "id": 1,
-          "tipo": "Italiano Branco"
-        },
-        {
-          "id": 2,
-          "tipo": "3 Queijos"
-        },
-        {
-          "id": 3,
-          "tipo": "Parmesão e Orégano"
-        },
-        {
-          "id": 4,
-          "tipo": "Integral"
-        }
-      ],
-      "carnes": [
-        {
-          "id": 1,
-          "tipo": "Maminha"
-        },
-        {
-          "id": 2,
-          "tipo": "Alcatra"
-        },
-        {
-          "id": 3,
-          "tipo": "Picanha"
-        },
-        {
-          "id": 4,
-          "tipo": "Veggie burger"
-        }
-      ],
-      "opcionais": [
-        {
-          "id": 1,
-          "tipo": "Bacon"
-        },
-        {
-          "id": 2,
-          "tipo": "Cheddar"
-        },
-        {
-          "id": 3,
-          "tipo": "Salame"
-        },
-        {
-          "id": 4,
-          "tipo": "Tomate"
-        },
-        {
-          "id": 4,
-          "tipo": "Cebola roxa"
-        },
-        {
-          "id": 4,
-          "tipo": "Pepino"
-        }
-      ]
+  "clientes": [
+    {
+      "id": "1",
+      "cpf": "123.456.789-00",
+      "nome": "Fulano de Tal",
+      "rg": "123456789",
+      "dataExpedicao": "2024-05-08T00:00:00.000Z",
+      "orgaoExpedicao": "SSP",
+      "uf": "SP",
+      "dataNascimento": "1990-01-01T00:00:00.000Z",
+      "sexo": "Masculino",
+      "estadoCivil": "Solteiro",
+      "endereco": {
+        "cep": "12345678",
+        "logradouro": "Rua dos Testes",
+        "numero": "123",
+        "complemento": "Apto 101",
+        "bairro": "Centro",
+        "cidade": "São Paulo",
+        "uf": "SP"
+      }
     },
-    "status": [
-      {
-        "id": 1,
-        "tipo": "Solicitado"
-      },
-      {
-        "id": 2,
-        "tipo": "Em produção"
-      },
-      {
-        "id": 3,
-        "tipo": "Finalizado"
+    {
+      "id": "2",
+      "cpf": "987.654.321-00",
+      "nome": "Ciclana de Tal",
+      "rg": "987654321",
+      "dataExpedicao": "2024-05-08T00:00:00.000Z",
+      "orgaoExpedicao": "SSP",
+      "uf": "RJ",
+      "dataNascimento": "1985-05-15T00:00:00.000Z",
+      "sexo": "Feminino",
+      "estadoCivil": "Casada",
+      "endereco": {
+        "cep": "87654321",
+        "logradouro": "Avenida das Rotas",
+        "numero": "456",
+        "complemento": "Casa 2",
+        "bairro": "Bairro Novo",
+        "cidade": "Rio de Janeiro",
+        "uf": "RJ"
       }
-    ],
-    "burgers": [
-      {
-        "nome": "Matheus Battisti",
-        "carne": "Picanha",
-        "pao": "Italiano Branco",
-        "opcionais": [
-          "Bacon",
-          "Salame",
-          "Cebola roxa"
-        ],
-        "status": "Finalizado",
-        "id": 1
-      },
-      {
-        "nome": "João Coelho",
-        "carne": "Maminha",
-        "pao": "3 Queijos",
-        "opcionais": [
-          "Salame",
-          "Cebola roxa"
-        ],
-        "status": "Solicitado",
-        "id": 4
+    },
+    {
+      "id": "32b0",
+      "nome": "fsdfsfsfsd",
+      "cpf": "324.234.234-23",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "cep": null,
+      "logradouro": null,
+      "nro": null,
+      "complemento": null,
+      "bairro": null,
+      "cidade": null
+    },
+    {
+      "id": "ff26",
+      "nome": "fsdfsfsfsdfsdfs",
+      "cpf": "454.655.465-45",
+      "rg": "fsdfsdfsfsd",
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "cep": null,
+      "logradouro": null,
+      "nro": null,
+      "complemento": null,
+      "bairro": null,
+      "cidade": null
+    },
+    {
+      "id": "ced4",
+      "nome": "terterterte",
+      "cpf": "353.453.534-53",
+      "rg": "tertetert",
+      "dtaExpedicao": "2024-05-08",
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "endereco": {
+        "cep": null,
+        "logradouro": null,
+        "nro": null,
+        "complemento": null,
+        "bairro": null,
+        "cidade": null,
+        "uf": null
       }
-    ]
-  }
+    },
+    {
+      "id": "e987",
+      "nome": "Viviane Balbino",
+      "cpf": "326.546.728-75",
+      "rg": "45646645544",
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": "MASCULINO",
+      "estadoCivil": "SOLTEIRO",
+      "endereco": {
+        "cep": null,
+        "logradouro": null,
+        "nro": null,
+        "complemento": null,
+        "bairro": null,
+        "cidade": null,
+        "uf": null
+      }
+    },
+    {
+      "id": "1d6f",
+      "nome": "Viviane Balbino",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": "2024-05-08",
+      "sexo": "MASCULINO",
+      "estadoCivil": "SOLTEIRO",
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "3ffd",
+      "nome": "Viviane Balbino",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": "2024-05-08",
+      "sexo": "MASCULINO",
+      "estadoCivil": "SOLTEIRO",
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "31d5",
+      "nome": "Viviane Balbino ",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": "MASCULINO",
+      "estadoCivil": "SOLTEIRO",
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "9376",
+      "nome": "Viviane Balbino ",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "ba23",
+      "nome": "Viviane Balbino ",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": "MASCULINO",
+      "estadoCivil": "SOLTEIRO",
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "ac38",
+      "nome": "Viviane Balbino ",
+      "cpf": "326.546.728-75",
+      "rg": null,
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    },
+    {
+      "id": "b25b",
+      "nome": "Viviane Balbino",
+      "cpf": "326.546.728-75",
+      "rg": "fsfsfsfs",
+      "dtaExpedicao": null,
+      "orgaoExpeditor": null,
+      "uf": null,
+      "dtaNascimento": null,
+      "sexo": null,
+      "estadoCivil": null,
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": null,
+        "complemento": null,
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": null
+      }
+    }
+  ]
+}

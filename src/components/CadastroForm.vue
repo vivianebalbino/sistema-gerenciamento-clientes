@@ -1,7 +1,7 @@
 <template>
   <!--<Message :msg="msg" v-show="msg" />-->
   <div>
-    <form id="cadastro-form" action="" v-on:submit.prevent="enviarFormulario()">
+    <form id="cadastro-form" @submit="enviarFormulario">
       <h2 class="titulos">Novo Cadastro</h2>
       <div class="tituloBox">
         <span>Dados Pessoais</span>
@@ -89,7 +89,7 @@
         </div>
         <div class="col-md-2">
           <label for="sexo">Sexo:</label>
-          <select id="sexo" name="sexo" class="form-control">
+          <select id="sexo" name="sexo" class="form-control" v-model="sexo">
             <option value="">Selecione</option>
             <option value="MASCULINO">Masculino</option>
             <option value="FEMININO">Feminino</option>
@@ -98,7 +98,12 @@
         </div>
         <div class="col-md-2">
           <label for="estadoCivil">Estado Civil:</label>
-          <select id="estadoCivil" name="estadoCivil" class="form-control">
+          <select
+            id="estadoCivil"
+            name="estadoCivil"
+            class="form-control"
+            v-model="estadoCivil"
+          >
             <option value="" selected>Selecione</option>
             <option value="SOLTEIRO">Solteiro (a)</option>
             <option value="CASADO">Casado (a) / União estável</option>
@@ -116,7 +121,6 @@
       <div class="col-md-0">
         <div class="col-md-1">
           <label for="cep">CEP:</label>
-          <div class="notification is-warning" v-if="cep"></div>
           <input
             type="text"
             id="cep"
@@ -196,14 +200,14 @@
         </div>
       </div>
       <div class="input-container">
-        <input class="submit-btn" type="submit" value="Criar meu Burger!" />
+        <input class="submit-btn" type="submit" value="Enviar Dados" />
       </div>
     </form>
   </div>
 </template>
 <script>
 /*import Message from "./Message";*/
-
+import axios from "axios";
 export default {
   name: "CadastroForm",
   data() {
@@ -229,11 +233,10 @@ export default {
   },
   methods: {
     async getIngredientes() {
-      const req = await fetch("http://localhost:3000/ingredientes");
+      const req = await fetch("http://localhost:3000/clientes");
       const data = await req.json();
       console.log(data);
-      this.paes = data.nome;
-      this.carnes = data.complemento;
+      console.log(data.nome);
     },
 
     formatarCPF() {
@@ -244,8 +247,9 @@ export default {
       this.cpf = cpfMask;
     },
 
-    enviarFormulario() {
-        if (!this.cpf) {
+    async enviarFormulario(e) {
+      e.preventDefault();
+      /*if (!this.cpf) {
         alert("Por favor, preencha o campo CPF.");
         return;
       }
@@ -253,25 +257,60 @@ export default {
       if (!this.dtaNascimento) {
         alert("Por favor, preencha o campo Data Nascimento.");
         return;
-      }
+      }*/
+
+      const data = {
+        nome: this.nome,
+        cpf: this.cpf,
+        rg: this.rg,
+        dtaExpedicao: this.dtaExpedicao,
+        orgaoExpeditor: this.orgaoExpeditor,
+        uf: this.uf,
+        dtaNascimento: this.dtaNascimento,
+        sexo: this.sexo,
+        estadoCivil: this.estadoCivil,
+        endereco: {
+          cep: this.cep,
+          logradouro: this.logradouro,
+          nro: this.nro,
+          complemento: this.complemento,
+          bairro: this.bairro,
+          cidade: this.cidade,
+          uf: this.uf,
+        },
+      };
+      axios
+        .post("http://localhost:3000/clientes", data)
+        .then((response) => {
+          console.log("Cliente enviado com sucesso:", response.data);
+
+          // Limpa todos os campos do cliente
+          document.querySelectorAll(".col-md-0").forEach(function (elemento) {
+            elemento.childNodes.forEach(function (div) {
+              div.children[1].value = "";
+            });
+          });
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar cliente:", error);
+          // Lógica de tratamento de erro, se necessário
+        });
     },
 
     async searchCep() {
-        let cepMask = this.cep.replace(/\D/g, '');
-        this.cep = cepMask;
+      let cepMask = this.cep.replace(/\D/g, "");
+      this.cep = cepMask;
       if (this.cep.length == 8) {
         const req = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
         const data = await req.json();
 
-        cepMask = cepMask.replace(/^(\d{5})(\d)/, '$1-$2'); 
+        cepMask = cepMask.replace(/^(\d{5})(\d)/, "$1-$2");
         this.cep = cepMask;
-        
+
         this.logradouro = data.logradouro;
         this.bairro = data.bairro;
         this.cidade = data.localidade;
         this.ufEndereco = data.uf;
-
-        
       }
     },
   },
@@ -282,17 +321,6 @@ export default {
 };
 </script>
 <style scoped>
-#burger-form {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.input-container {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-}
-
 label {
   display: inline-block;
   margin-bottom: 5px;
@@ -302,38 +330,6 @@ label {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333;
-}
-
-input,
-select {
-  padding: 5px 10px;
-  width: 300px;
-}
-
-#opcionais-container {
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-#opcionais-title {
-  width: 100%;
-}
-
-.checkbox-container {
-  display: flex;
-  align-items: flex-start;
-  width: 50%;
-  margin-bottom: 20px;
-}
-
-.checkbox-container span,
-.checkbox-container input {
-  width: auto;
-}
-
-.checkbox-container span {
-  margin-left: 6px;
-  font-weight: bold;
 }
 
 .submit-btn {
@@ -346,6 +342,7 @@ select {
   margin: 0 auto;
   cursor: pointer;
   transition: 0.5s;
+  margin-bottom: 100px;
 }
 
 .submit-btn:hover {

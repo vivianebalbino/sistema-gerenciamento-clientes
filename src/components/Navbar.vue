@@ -4,8 +4,8 @@
       <img :src="logo" :alt="alt" id="logo" />
     </router-link>
     <router-link to="/">Login</router-link>
-    <router-link to="/cadastro-clientes">Cadastro Clientes</router-link>
-    <router-link to="/teste">teste</router-link>
+    <router-link to="/cadastro-clientes">Incluir</router-link>
+    <router-link to="/teste">Excluir</router-link>
   </div>
 </template>
 <script>
