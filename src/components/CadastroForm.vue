@@ -1,5 +1,5 @@
 <template>
-  <!--<Message :msg="msg" v-show="msg" />-->
+  <Message :msg="msg" v-show="msg" />
   <div>
     <form id="cadastro-form" @submit="enviarFormulario">
       <h2 class="titulos">Novo Cadastro</h2>
@@ -206,7 +206,7 @@
   </div>
 </template>
 <script>
-/*import Message from "./Message";*/
+import Message from "./Message";
 import axios from "axios";
 export default {
   name: "CadastroForm",
@@ -229,6 +229,7 @@ export default {
       cidade: null,
       ufEndereco: null,
       uf: null,
+      msg: null,
     };
   },
   methods: {
@@ -258,7 +259,7 @@ export default {
         alert("Por favor, preencha o campo Data Nascimento.");
         return;
       }*/
-
+      window.scrollTo(0, 0);
       const data = {
         nome: this.nome,
         cpf: this.cpf,
@@ -283,8 +284,6 @@ export default {
         .post("http://localhost:3000/clientes", data)
         .then((response) => {
           console.log("Cliente enviado com sucesso:", response.data);
-
-          // Limpa todos os campos do cliente
           document.querySelectorAll(".col-md-0").forEach(function (elemento) {
             elemento.childNodes.forEach(function (div) {
               div.children[1].value = "";
@@ -293,8 +292,12 @@ export default {
         })
         .catch((error) => {
           console.error("Erro ao enviar cliente:", error);
-          // Lógica de tratamento de erro, se necessário
         });
+
+      this.msg = "Cadastro realizado com sucesso!";
+      
+
+      // Limpa todos os campos do cliente
     },
 
     async searchCep() {
@@ -317,6 +320,10 @@ export default {
 
   mounted() {
     this.getIngredientes();
+  },
+
+  components: {
+    Message,
   },
 };
 </script>

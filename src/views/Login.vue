@@ -32,11 +32,11 @@ export default {
   },
 
   mounted() {
-    this.hideNavLinks();
+    this.hideCabecalhoRodape();
   },
 
   methods: {
-    hideNavLinks() {
+    hideCabecalhoRodape() {
       document.querySelector("#nav").style = "visibility: hidden;"
       document.querySelector("#footer").style = "visibility: hidden;"
     }, 

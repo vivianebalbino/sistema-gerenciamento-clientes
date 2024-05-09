@@ -3,9 +3,8 @@
     <router-link to="/" id="logo_url">
       <img :src="logo" :alt="alt" id="logo" />
     </router-link>
-    <router-link to="/">Login</router-link>
     <router-link to="/cadastro-clientes">Incluir</router-link>
-    <router-link to="/teste">Excluir</router-link>
+    <router-link to="/lista-cadastro">Gerenciar Cadastro</router-link>
   </div>
 </template>
 <script>

@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 
-
 const routes = [
   {
     path: '/',
@@ -9,10 +8,17 @@ const routes = [
     component: Login
   },
   {
+    path: '/lista-cadastro',
+    name: 'ListaCliente',
+    component: () => import(/* webpackChunkName: "ListaCliente" */ '../views/ListaCliente.vue')
+  },
+
+  {
     path: '/cadastro-clientes',
     name: 'CadastroCliente',
     component: () => import(/* webpackChunkName: "CadastroCliente" */ '../views/CadastroCliente.vue')
   },
+
 
 ]
 
