@@ -339,17 +339,21 @@ label {
   color: #333;
 }
 
+.input-container{
+  text-align: end;
+}
 .submit-btn {
-  background-color: #222;
-  color: #fcba03;
+  background-color: #a90637;
+  color: #ffff;
   font-weight: bold;
-  border: 2px solid #222;
+  border: 2px solid #a90637;
   padding: 10px;
   font-size: 16px;
   margin: 0 auto;
   cursor: pointer;
   transition: 0.5s;
   margin-bottom: 100px;
+  border-radius: 10px;
 }
 
 .submit-btn:hover {

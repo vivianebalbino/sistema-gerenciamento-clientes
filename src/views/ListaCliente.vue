@@ -1,7 +1,6 @@
 <template>
+    <h1 class="titulos">Lista Clientes</h1>
     <ListarClientesForm/>
-    <h1>teste listar clientes</h1>
-    
 </template>
 <script>
 import ListarClientesForm from '../components/ListarClientesForm.vue'
