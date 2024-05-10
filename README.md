@@ -52,7 +52,7 @@ npm run backend
 ```
 
 
-3. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.
+3. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.  
    _Para visualizar a API acesse http://localhost:3000/clientes._ 
 
 > [!NOTE]
