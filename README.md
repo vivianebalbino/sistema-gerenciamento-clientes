@@ -2,10 +2,10 @@
 Este é um sistema de gerenciamento de clientes desenvolvido em Vue.js, que permite visualizar, editar e excluir clientes.
 
 ## Funcionalidades
-  •  Visualizar lista de clientes
-  •  Filtrar clientes por nome e CPF
-  •  Editar informações de um cliente
-  •  Excluir cliente
+  * •  Visualizar lista de clientes
+  * •  Filtrar clientes por nome e CPF
+  * •  Editar informações de um cliente
+  * •  Excluir cliente
 
 ## Telas
   •  Login
