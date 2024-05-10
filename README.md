@@ -46,6 +46,10 @@ npm install
 ```
 npm run serve
 ```
+1. Inicie o serviço API
+```
+npm run backend
+```
 
 2. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.  
 
