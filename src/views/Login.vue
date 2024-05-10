@@ -1,4 +1,11 @@
 <template>
+    <div class="logo-image">
+      <img
+        id="marca"
+        src="/img/logo_fcc_transparente.png"
+        alt="Logo Fundação Carlos Chagas"
+      />
+  </div>
   <div class="loginCliente">
     <div> 
         <h2 class="login">Login</h2>
@@ -131,8 +138,8 @@ label{
 }
 
 #marca{
-    margin: 45px 0px 0px 150px;
-    width: 15%;
+    margin: -62px 0px 0px 150px;
+    width: 14%;
 }
 .btn-logar{
     background-repeat: repeat-x;

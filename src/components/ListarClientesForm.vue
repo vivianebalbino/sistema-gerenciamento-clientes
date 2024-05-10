@@ -1,4 +1,22 @@
 <template>
+  <div class="input-wrapper">
+    <label for="filter" class="sr-only">Busca Nome:</label>
+    <input
+      id="filterNome"
+      class="form-control"
+      type="text"
+      placeholder="Nome"
+      @keyup="filterDados"
+    />
+    <label for="filterCPF" class="sr-only">Busca CPF:</label>
+    <input
+      id="filterCPF"
+      class="form-control"
+      type="text"
+      placeholder="CPF"
+      @keyup="filterDados"
+    />
+  </div>
   <div id="cliente-table">
     <div>
       <div id="cliente-table-heading">
@@ -11,42 +29,74 @@
       </div>
     </div>
     <div id="cliente-table-rows">
-      <div class="cliente-table-row" v-for="clientes in clientes" :key="clientes.id">
+      <div
+        class="cliente-table-row"
+        v-for="clientes in clientes"
+        :key="clientes.id"
+      >
         <div>{{ clientes.nome }}</div>
         <div>{{ clientes.cpf }}</div>
         <div>{{ clientes.rg }}</div>
-        <div>{{ clientes.dataNascimento }}</div>
+        <div>{{ clientes.dtaNascimento }}</div>
         <div>{{ clientes.sexo }}</div>
         <div>{{ clientes.estadoCivil }}</div>
-        <div class="actionButton"><button class="delete-btn" @click="alterarCliente(clientes.id)">Alterar</button></div>
-        <div class="actionButton"><button class="delete-btn" @click="exlcuirCliente(clientes.id)">Excluir</button></div>
+        <div class="actionButton">
+          <button class="delete-btn" @click="editarCliente(clientes)">
+            Alterar
+          </button>
+        </div>
+        <div class="actionButton">
+          <button class="delete-btn" @click="exlcuirCliente(clientes.id)">
+            Excluir
+          </button>
+        </div>
       </div>
     </div>
   </div>
   <div v-if="mostrarModal">
-      <div class="modal">
-        <h3>Editar Cliente</h3>
-        <label>Estado Civil:</label>
-        <input type="text" v-model="clienteEditando.nome">
-        <label>CEP:</label>
-        <input type="text" v-model="clienteEditando.cep">
-        <label>Logradouro:</label>
-        <input type="text" v-model="clienteEditando.logradouro">
-        <label>Numero:</label>
-        <input type="text" v-model="clienteEditando.numero">
-        <label>Complemento:</label>
-        <input type="text" v-model="clienteEditando.complemento">
-        <label>Bairro:</label>
-        <input type="text" v-model="clienteEditando.bairro">
-        <label>Cidade:</label>
-        <input type="text" v-model="clienteEditando.cidade">
-        <label>Estado:</label>
-        <input type="text" v-model="clienteEditando.uf">
-        <button @click="salvarClienteEditado">Salvar</button>
-        <button @click="cancelarEdicao">Cancelar</button>
+    <div class="modal">
+      <h2 class="titulos">Editar Cliente</h2>
+      <label>Estado Civil:</label>
+      <input class="col-m1" type="text" v-model="clienteEditando.estadoCivil" />
+      <label>CEP:</label>
+      <input
+        class="col-m1"
+        type="text"
+        v-model="clienteEditando.endereco.cep"
+      /><br />
+      <label>Logradouro:</label>
+      <input
+        class="col-m3"
+        type="text"
+        v-model="clienteEditando.endereco.logradouro"
+      />
+      <label>Numero:</label>
+      <input
+        class="col-m2"
+        type="text"
+        v-model="clienteEditando.endereco.numero"
+      />
+      <label>Complemento:</label>
+      <input
+        class="col-m4"
+        type="text"
+        v-model="clienteEditando.endereco.complemento"
+      />
+      <label>Bairro:</label>
+      <input type="text" v-model="clienteEditando.endereco.bairro" />
+      <label>Cidade:</label>
+      <input type="text" v-model="clienteEditando.endereco.cidade" />
+      <label>UF:</label>
+      <input class="col-m2" type="text" v-model="clienteEditando.uf" /><br />
+      <div class="col-m5">
+        <button class="delete-btn col-m6" @click="salvarClienteEditado">
+          Salvar
+        </button>
+        <button class="delete-btn col-m6" @click="fecharModal">Cancelar</button>
       </div>
-      <div class="overlay" @click="fecharModal"></div>
     </div>
+    <div class="overlay" @click="fecharModal"></div>
+  </div>
 </template>
 <script>
 import axios from "axios";
@@ -55,10 +105,9 @@ export default {
   data() {
     return {
       clientes: null,
-      cliente_id: null, 
+      cliente_id: null,
       clienteEditando: null,
-      mostrarModal: false 
-
+      mostrarModal: false,
     };
   },
   methods: {
@@ -70,31 +119,103 @@ export default {
     },
     async carregarClientes() {
       try {
-        const response = await axios.get('http://localhost:3000/clientes');
+        const response = await axios.get("http://localhost:3000/clientes");
         this.clientes = response.data;
       } catch (error) {
-        console.error('Erro ao carregar clientes:', error);
+        console.error("Erro ao carregar clientes:", error);
       }
     },
-    async exlcuirCliente(id){
-        console.log(id)
-        try {
-            await axios.delete(`http://localhost:3000/clientes/${id}`);
-            // Atualizar a lista de clientes após a exclusão
+    async exlcuirCliente(id) {
+      console.log(id);
+      try {
+        await axios.delete(`http://localhost:3000/clientes/${id}`);
         this.carregarClientes();
-        } catch (error) {
-        console.error('Erro ao excluir cliente:', error);
-        }
-    }
+      } catch (error) {
+        console.error("Erro ao excluir cliente:", error);
+      }
+    },
+    editarCliente(cliente) {
+      console.log({ ...cliente });
+      this.clienteEditando = { ...cliente };
+      this.mostrarModal = true;
+    },
+
+    async salvarClienteEditado() {
+      try {
+        await axios.put(
+          `http://localhost:3000/clientes/${this.clienteEditando.id}`,
+          this.clienteEditando
+        );
+        this.carregarClientes();
+        this.fecharModal();
+      } catch (error) {
+        console.error("Erro ao editar cliente:", error);
+      }
+    },
+    fecharModal() {
+      this.clienteEditando = null;
+      this.mostrarModal = false;
+    },
+
+    filterDados() {
+      document
+        .querySelector("#cliente-table-rows")
+        .childNodes.forEach(function (elemento) {
+          const inputSearch = document
+            .querySelector("#filterNome")
+            .value.toLowerCase();
+          const inputSearchCPF = document
+            .querySelector("#filterCPF")
+            .value.replace(/\D/g, "");
+          if (elemento.nodeName == "DIV") {
+            if (inputSearch != "" || inputSearchCPF != "") {
+              const nomeCliente =
+                elemento.childNodes[0].textContent.toLowerCase();
+              const cpfCliente = elemento.childNodes[1].textContent.replace(
+                /\D/g,
+                ""
+              );
+              if (
+                !nomeCliente.match(inputSearch) ||
+                !cpfCliente.match(inputSearchCPF)
+              ) {
+                elemento.style.display = "none";
+              } else {
+                elemento.style.display = "";
+              }
+            } else {
+              elemento.style.display = "";
+            }
+          }
+        });
+    },
   },
 
-  
   mounted() {
     this.getCliente();
   },
 };
 </script>
 <style scoped>
+.sr-only {
+  font-size: 13px;
+  color: #261d20;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+#filterCPF {
+  width: 25%;
+  margin-right: 9%;
+}
+#filterNome {
+  width: 25%;
+  margin-right: 9%;
+}
+.input-wrapper {
+  width: 100%;
+  display: ruby;
+}
 .modal {
   position: fixed;
   top: 50%;
@@ -106,7 +227,37 @@ export default {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   z-index: 9999;
 }
+.modal label {
+  font-size: 14px;
+  padding-right: 12px;
+  font-weight: bold;
+  color: #4e4246;
+}
+.col-m1 {
+  width: 18%;
+}
+.col-m2 {
+  width: 10%;
+}
+.col-m3 {
+  width: 50%;
+}
+.col-m4 {
+  width: 35%;
+}
+.col-m5 {
+  text-align: end;
+}
+.col-m6 {
+  margin-right: 2% !important;
+  width: 13%;
+}
 
+.modal input {
+  margin-right: 18px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
 .overlay {
   position: fixed;
   top: 0;
@@ -120,6 +271,12 @@ export default {
 #cliente-table {
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 10%;
+  margin-top: 3%;
+}
+
+h1 {
+  margin-top: 4% !important;
 }
 
 #cliente-table-heading,
@@ -136,8 +293,8 @@ export default {
   border-bottom: 3px solid #333;
 }
 
-.actionButton{
-    width: 7% !important;
+.actionButton {
+  width: 7% !important;
 }
 
 .cliente-table-row {
@@ -163,10 +320,10 @@ select {
 }
 
 .links {
-    color: #a84762;
-    font-size: 17px;
-    padding: 38px 15px;
-    text-decoration: underline;
+  color: #a84762;
+  font-size: 17px;
+  padding: 38px 15px;
+  text-decoration: underline;
 }
 .delete-btn {
   background-color: #a90637;

@@ -105,12 +105,12 @@
             v-model="estadoCivil"
           >
             <option value="" selected>Selecione</option>
-            <option value="SOLTEIRO">Solteiro (a)</option>
-            <option value="CASADO">Casado (a) / União estável</option>
-            <option value="DIVORCIADO">
+            <option value="Solteiro">Solteiro (a)</option>
+            <option value="Cadado">Casado (a) / União estável</option>
+            <option value="Divorciado">
               Divorciado (a) / Separado (a) / Desquitado (a)
             </option>
-            <option value="VIUVO">Viúvo (a)</option>
+            <option value="viuvo">Viúvo (a)</option>
           </select>
         </div>
       </div>
@@ -250,7 +250,7 @@ export default {
 
     async enviarFormulario(e) {
       e.preventDefault();
-      /*if (!this.cpf) {
+      if (!this.cpf) {
         alert("Por favor, preencha o campo CPF.");
         return;
       }
@@ -258,7 +258,7 @@ export default {
       if (!this.dtaNascimento) {
         alert("Por favor, preencha o campo Data Nascimento.");
         return;
-      }*/
+      }
       window.scrollTo(0, 0);
       const data = {
         nome: this.nome,
@@ -415,22 +415,5 @@ form {
   display: inline-table;
 }
 
-.form-control {
-  display: block;
-  width: 100%;
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.428571429;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-  -webkit-transition: border-color ease-in-out 0.15s,
-    box-shadow ease-in-out 0.15s;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-}
+
 </style>
