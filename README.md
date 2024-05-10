@@ -20,8 +20,8 @@ Este é um sistema de gerenciamento de clientes desenvolvido em Vue.js, que perm
   *  npm 9.8.1
 
  #### Manipulação de dados
- > JSON-Server - Simulação API REST
- > Comunicação com a base de dados - APIS (Axios)
+ JSON-Server - Simulação API REST  
+ Comunicação com a base de dados - APIS (Axios)
 
  # Instalação
 
@@ -47,14 +47,13 @@ npm install
 npm run serve
 ```
 
-#### Validação Tela Login
+2. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.  
 
-##### Usuários e Senhas
-vbalbin - fcc01
-gsouza - fcc02
+> [!NOTE]
+> Para logar no Sistema, utilize o usário e senha cadastrados.
 
-
-2. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.
+**vbalbin:** _fcc01_  
+**gsouza:**  _fcc02_
 
 # Contribuindo
 
