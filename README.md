@@ -51,7 +51,9 @@ npm run serve
 npm run backend
 ```
 
-2. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.  
+
+3. Abra o navegador e acesse http://localhost:8080 para visualizar a aplicação.
+   _Para visualizar a API acesse http://localhost:3000/clientes._ 
 
 > [!NOTE]
 > Para logar no Sistema, utilize o usário e senha cadastrados.
