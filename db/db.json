@@ -13,7 +13,7 @@
       "estadoCivil": "Solteiro",
       "endereco": {
         "cep": "7777-55555",
-        "logradouro": "teste",
+        "logradouro": "gdsfsdfsdf",
         "nro": "161",
         "complemento": "Apto 137",
         "bairro": "Jardim Vista Alegre",
@@ -38,6 +38,28 @@
         "logradouro": "Rua Caraguatatuba",
         "nro": "161",
         "complemento": "Apto 137",
+        "bairro": "Jardim Vista Alegre",
+        "cidade": "Embu das Artes",
+        "uf": "SP",
+        "numero": "255"
+      }
+    },
+    {
+      "id": "68bc",
+      "nome": "Luiz Balbino",
+      "cpf": "064.069.248-60",
+      "rg": "524526522-8",
+      "dtaExpedicao": "2010-05-01",
+      "orgaoExpeditor": "SSP",
+      "uf": "SP",
+      "dtaNascimento": "1958-06-10",
+      "sexo": "MASCULINO",
+      "estadoCivil": "Solteiro",
+      "endereco": {
+        "cep": "06807-230",
+        "logradouro": "Rua Caraguatatuba",
+        "nro": "252",
+        "complemento": null,
         "bairro": "Jardim Vista Alegre",
         "cidade": "Embu das Artes",
         "uf": "SP"

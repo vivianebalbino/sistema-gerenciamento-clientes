@@ -89,8 +89,7 @@
         </div>
         <div class="col-md-2">
           <label for="sexo">Sexo:</label>
-          <select id="sexo" name="sexo" class="form-control" v-model="sexo">
-            <option value="">Selecione</option>
+          <select id="sexo" name="sexo" class="form-control" v-model="sexo" placeholder="Selecione">
             <option value="MASCULINO">Masculino</option>
             <option value="FEMININO">Feminino</option>
             <option value="OUTRO">Outro</option>
@@ -103,8 +102,8 @@
             name="estadoCivil"
             class="form-control"
             v-model="estadoCivil"
+            placeholder="Selecione"
           >
-            <option value="" selected>Selecione</option>
             <option value="Solteiro">Solteiro (a)</option>
             <option value="Cadado">Casado (a) / União estável</option>
             <option value="Divorciado">
@@ -130,6 +129,7 @@
             v-model="cep"
             placeholder="Digite o seu cep"
             class="form-control"
+            tabindex="-1"
           />
         </div>
         <div class="col-md-6">
@@ -236,8 +236,6 @@ export default {
     async getIngredientes() {
       const req = await fetch("http://localhost:3000/clientes");
       const data = await req.json();
-      console.log(data);
-      console.log(data.nome);
     },
 
     formatarCPF() {
@@ -283,7 +281,6 @@ export default {
       axios
         .post("http://localhost:3000/clientes", data)
         .then((response) => {
-          console.log("Cliente enviado com sucesso:", response.data);
           document.querySelectorAll(".col-md-0").forEach(function (elemento) {
             elemento.childNodes.forEach(function (div) {
               div.children[1].value = "";
@@ -291,19 +288,15 @@ export default {
           });
         })
         .catch((error) => {
-          console.error("Erro ao enviar cliente:", error);
         });
 
       this.msg = "Cadastro realizado com sucesso!";
-      
-
-      // Limpa todos os campos do cliente
     },
 
     async searchCep() {
       let cepMask = this.cep.replace(/\D/g, "");
       this.cep = cepMask;
-      if (this.cep.length == 8) {
+      if (this.cep.length == 8 && this.cep.length == 8) {
         const req = await fetch(`https://viacep.com.br/ws/${this.cep}/json/`);
         const data = await req.json();
 

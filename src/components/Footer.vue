@@ -18,12 +18,13 @@ export default {
     border-top: 2px solid #686465;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     bottom: 0;
     width: 100%;
     height: 40px;
     margin: auto;
     position: fixed;
+    padding-right: 29px;
 }
 
 .copyright{

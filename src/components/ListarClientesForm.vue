@@ -74,7 +74,7 @@
       <input
         class="col-m2"
         type="text"
-        v-model="clienteEditando.endereco.numero"
+        v-model="clienteEditando.endereco.nro"
       />
       <label>Complemento:</label>
       <input
@@ -114,28 +114,33 @@ export default {
     async getCliente() {
       const req = await fetch("http://localhost:3000/clientes");
       const data = await req.json();
+
+      data.forEach(cliente => {
+        const dataFormatada = new Date(cliente.dtaNascimento);
+        const dia = dataFormatada.getDate();
+        const mes = dataFormatada.getMonth() + 1;
+        const ano = dataFormatada.getFullYear();
+        const DataCliente =  `${dia.toString().padStart(2, '0')}/${mes.toString().padStart(2, '0')}/${ano}`;
+        cliente.dtaNascimento = DataCliente;
+      });
+
       this.clientes = data;
-      console.log(this.clientes);
     },
     async carregarClientes() {
       try {
         const response = await axios.get("http://localhost:3000/clientes");
         this.clientes = response.data;
       } catch (error) {
-        console.error("Erro ao carregar clientes:", error);
       }
     },
     async exlcuirCliente(id) {
-      console.log(id);
       try {
         await axios.delete(`http://localhost:3000/clientes/${id}`);
         this.carregarClientes();
       } catch (error) {
-        console.error("Erro ao excluir cliente:", error);
       }
     },
     editarCliente(cliente) {
-      console.log({ ...cliente });
       this.clienteEditando = { ...cliente };
       this.mostrarModal = true;
     },
@@ -149,7 +154,6 @@ export default {
         this.carregarClientes();
         this.fecharModal();
       } catch (error) {
-        console.error("Erro ao editar cliente:", error);
       }
     },
     fecharModal() {
@@ -255,8 +259,17 @@ export default {
 
 .modal input {
   margin-right: 18px;
-  margin-bottom: 10px;
-  font-size: 14px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    padding-bottom: 6px;
+    line-height: 1.428571429;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 .overlay {
   position: fixed;

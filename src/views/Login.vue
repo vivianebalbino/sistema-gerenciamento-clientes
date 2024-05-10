@@ -49,7 +49,6 @@ export default {
     }, 
 
     login() {
-      // Verifica se as credenciais fornecidas correspondem a algum usuário no arquivo JSON
       const user = users.find(
         (user) =>
           user.username === this.username && user.password === this.password
