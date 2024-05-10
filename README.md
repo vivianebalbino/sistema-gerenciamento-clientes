@@ -46,7 +46,7 @@ npm install
 ```
 npm run serve
 ```
-1. Inicie o serviço API
+2. Inicie o serviço API
 ```
 npm run backend
 ```
