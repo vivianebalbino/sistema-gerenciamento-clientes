@@ -90,9 +90,9 @@
         <div class="col-md-2">
           <label for="sexo">Sexo:</label>
           <select id="sexo" name="sexo" class="form-control" v-model="sexo" placeholder="Selecione">
-            <option value="MASCULINO">Masculino</option>
-            <option value="FEMININO">Feminino</option>
-            <option value="OUTRO">Outro</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+            <option value="Outro">Outro</option>
           </select>
         </div>
         <div class="col-md-2">
@@ -105,11 +105,11 @@
             placeholder="Selecione"
           >
             <option value="Solteiro">Solteiro (a)</option>
-            <option value="Cadado">Casado (a) / União estável</option>
+            <option value="Casado">Casado (a) / União estável</option>
             <option value="Divorciado">
               Divorciado (a) / Separado (a) / Desquitado (a)
             </option>
-            <option value="viuvo">Viúvo (a)</option>
+            <option value="Viuvo">Viúvo (a)</option>
           </select>
         </div>
       </div>
