@@ -20,8 +20,8 @@ Este é um sistema de gerenciamento de clientes desenvolvido em Vue.js, que perm
   *  npm 9.8.1
 
  #### Manipulação de dados
- JSON-Server - Simulação API REST
- Comunicação com a base de dados - APIS (Axios)
+ - JSON-Server - Simulação API REST
+ - Comunicação com a base de dados - APIS (Axios)
 
  # Instalação
 
